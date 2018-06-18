@@ -1,19 +1,16 @@
-class Solution:
-    # @return an integer
-    def lengthOfLongestSubstring( s):
-        start = maxLength = 0
-        usedChar = {}
-
-        for i in range(len(s)):
-            if s[i] in usedChar and start <= usedChar[s[i]]:
-                start = usedChar[s[i]] + 1
-            else:
-                maxLength = max(maxLength, i - start + 1)
-
-            usedChar[s[i]] = i
-
-        return maxLength
-
-s="abcabcbb"
-a = Solution()
-print(Solution.lengthOfLongestSubstring(s))
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        dict = {}
+        
+        for i, num in enumerate(nums):
+            dict[num] = i
+        
+        for i, num in enumerate(nums):
+            if target-num in dict and dict[target-num]!=i:
+                return (i, dict[target-num])
+                
